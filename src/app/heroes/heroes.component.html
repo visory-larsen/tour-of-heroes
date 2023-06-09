@@ -1,17 +1,13 @@
 <h2>My Heroes</h2>
 
-<div>
+<div class="add-heroes">
   <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button
-    type="button"
-    class="add-button"
-    (click)="add(heroName.value); heroName.value = ''"
-  >
-    Add hero
-  </button>
+  <input
+    id="new-hero"
+    #heroName
+    placeholder="Add hero"
+    (keyup.enter)="add(heroName.value); heroName.value = ''"
+  />
 </div>
 
 <ul class="heroes">

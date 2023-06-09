@@ -1,0 +1,9 @@
+<input
+  type="number"
+  #inputDisplayCount
+  class="heroes-display-selector"
+  value="{{ displayCount }}"
+  min="1"
+  max="{{ heroes.length }}"
+  (input)="updateDisplayCount(inputDisplayCount.value)"
+/>

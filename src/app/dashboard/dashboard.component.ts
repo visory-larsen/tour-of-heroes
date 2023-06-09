@@ -8,7 +8,9 @@ import { HeroService } from '../services/hero-service/hero.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  displayCount: number = 0;
   heroes: Hero[] = [];
+  filteredHeroes: Hero[] = [];
 
   constructor(private heroService: HeroService) {}
 
@@ -19,6 +21,20 @@ export class DashboardComponent implements OnInit {
   getHeroes(): void {
     this.heroService
       .getHeroes()
-      .subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
+      .subscribe(
+        (heroes) => (
+          (this.heroes = heroes),
+          (this.filteredHeroes = heroes),
+          (this.displayCount = heroes.length)
+        )
+      );
+  }
+
+  filterHeroes(displayCount: number): void {
+    if (displayCount === this.heroes.length) this.filteredHeroes = this.heroes;
+    else {
+      const filteredHeroes = this.heroes.slice(1, displayCount + 1);
+      this.filteredHeroes = filteredHeroes;
+    }
   }
 }

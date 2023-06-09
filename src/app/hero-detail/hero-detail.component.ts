@@ -36,4 +36,10 @@ export class HeroDetailComponent {
       this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
     }
   }
+
+  delete(): void {
+    if (this.hero) {
+      this.heroService.deleteHero(this.hero.id).subscribe(() => this.goBack());
+    }
+  }
 }

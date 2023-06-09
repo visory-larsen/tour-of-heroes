@@ -1,8 +1,20 @@
-<h2>Top Heroes</h2>
+<div class="heroes-header">
+  <h2>
+    Top
+    <app-hero-incrementer
+      [displayCount]="displayCount"
+      [heroes]="heroes"
+      (filterHeroes)="filterHeroes($event)"
+    />
+    Heroes
+  </h2>
+  <app-hero-search />
+</div>
 <div class="heroes-menu">
-  <a *ngFor="let hero of heroes" routerLink="/detail/{{ hero.id }}">
+  <a
+    *ngFor="let hero of filteredHeroes; trackBy: 'id' | trackByProperty"
+    routerLink="/detail/{{ hero.id }}"
+  >
     {{ hero.name }}
   </a>
 </div>
-
-<app-hero-search></app-hero-search>
