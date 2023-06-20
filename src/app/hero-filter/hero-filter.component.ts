@@ -13,7 +13,7 @@ export class HeroFilterComponent {
 
   constructor() {}
 
-  updateDisplayCount(count: any): void {
+  updateDisplayCount(count: string): void {
     const toIntCount = parseInt(count);
     this.filterHeroes.emit(toIntCount);
   }
